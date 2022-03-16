@@ -1,5 +1,5 @@
-#HW3 CNN 
-##Task description:
+# HW3 CNN 
+## Task description:
 Use CNN model to do the classification task with food11 dataset.
 
 I use the efficientnet_b7 model to reach the boss baseline.<br>
