@@ -6,9 +6,9 @@ department : NTUEE
 
 ## HW Description
 ### HW1
-####Regression - Covid19
+#### Regression - Covid19
 ### HW2
-####Classification 
+#### Classification 
 ### HW3
 #### CNN
 ### HW4
