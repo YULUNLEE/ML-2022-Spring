@@ -1,0 +1,64 @@
+class LSTM(nn.Module):
+    def __init__(self):
+        super(LSTM, self).__init__()
+        self.rnn = nn.LSTM(         # if use nn.RNN(), it hardly learns
+            input_size=39,
+            hidden_size=512,         # rnn hidden unit
+            num_layers=5,           # number of rnn layer
+            batch_first=True,       # input & output will has batch size as 1s dimension. e.g. (batch, time_step, input_size)
+            bidirectional=False,
+            dropout = 0.1
+        )
+
+        self.classifier = nn.Sequential(
+                                        nn.Linear(512, 256),
+                                        nn.ReLU(),
+                                        nn.BatchNorm1d(256),
+                                        nn.Linear(256,64),
+                                        nn.ReLU(),
+                                        nn.BatchNorm1d(64),
+                                        nn.Linear(64, 41),
+                                        # nn.ReLU(),
+                                        # nn.BatchNorm1d(64),
+                                        # nn.Linear(64, 41),
+                                        )
+        # 初始时间步和最终时间步的隐藏状态作为全连接层输入
+        self.w_omega = nn.Parameter(torch.Tensor(hidden_dim, hidden_dim))
+        self.u_omega = nn.Parameter(torch.Tensor(hidden_dim, 1))
+        nn.init.uniform_(self.w_omega, -0.1, 0.1)
+        nn.init.uniform_(self.u_omega, -0.1, 0.1)
+        self.dropout =nn.Dropout(0.5)
+
+    def attention_net(self, x, query, mask=None):  # 軟性注意力機制（key=value=x）
+        d_k = query.size(-1)  # d_k為query的維度
+        scores = torch.matmul(query, x.transpose(1, 2)) / math.sqrt(d_k)  # 打分機制  scores:[batch, seq_len, seq_len]
+        p_attn = F.softmax(scores, dim=-1)  # 對最後一個維度歸一化得分
+        context = torch.matmul(p_attn, x).sum(1)  # 對權重化的x求和，[batch, seq_len, hidden_dim*2]->[batch, hidden_dim*2]
+        return context, p_attn
+
+    def forward(self, x):
+        # x shape (batch, time_step, input_size)
+        # r_out shape (batch, time_step, output_size)
+        # h_n shape (n_layers, batch, hidden_size)
+        # h_c shape (n_layers, batch, hidden_size)
+        # h0 = torch.zeros(2*2, x.size(0), 1024)  # 同样考虑向前层和向后层
+        # c0 = torch.zeros(2*2, x.size(0), 1024)
+        r_out, (h_n, h_c) = self.rnn(x, None)   # None represents zero initial hidden state
+        query = self.dropout(r_out)
+        attn_output, attention = self.attention_net(r_out, query)  # 和LSTM的不同就在於這一句
+        out=self.classifier(attn_output)
+        return out
+
+optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=0.005)
+loss = criterion(outputs, labels)+0.001*penalty
+
+# data prarameters
+concat_nframes = 91              # the number of frames to concat with, n must be odd (total 2k+1 = n frames)
+train_ratio = 1              # the ratio of data used for training, the rest will be used for validation
+
+# training parameters
+seed = 101                        # random seed
+batch_size = 256                # batch size
+num_epoch = 30                   # the number of training epoch
+learning_rate = 0.0001          # learning rate
+model_path = './model.ckpt'     # the path where the checkpoint will be saved

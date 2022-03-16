@@ -1,0 +1,32 @@
+    def __init__(self, input_dim):
+        super(My_Model, self).__init__()
+        # TODO: modify model's structure, be aware of dimensions.
+        self.layers = nn.Sequential(
+            nn.Linear(input_dim, 256),
+            nn.ReLU(),
+            nn.Dropout(0.2),
+            # nn.LayerNorm(64),
+            nn.Linear(256, 64),
+            nn.ReLU(),
+            nn.Dropout(0.1),
+            # nn.LayerNorm(32),
+            nn.Linear(64, 32),
+            # nn.LayerNorm(8),
+            nn.ReLU(),
+            # nn.LayerNorm(16),
+            nn.Linear(32, 16),
+            nn.ReLU(),
+            # nn.LayerNorm(8),
+            nn.Linear(16,1)
+        )
+
+ config = {
+        'seed': 101,      # Your seed number, you can pick your lucky number. :)
+        'select_all': False,   # Whether to use all features.
+        'valid_ratio': 0.2,   # validation_size = train_size * valid_ratio
+        'n_epochs': 5000,     # Number of epochs.
+        'batch_size': 256,
+        'learning_rate': 1e-4,
+        'early_stop': 400,    # If model has not improved for this many consecutive epochs, stop training.
+        'save_path': f'./models/model_drop_81_0.9428774416446686.ckpt'  # Your model will be saved here.
+    }
