@@ -13,7 +13,8 @@ transforms.RandomRotation(degrees=(0, 30)),<br>
 transforms.RandomCrop(size=(80,80)),<br>
 transforms.RandAugment(),<br>
 transforms.RandomPerspective(distortion_scale=0.6, p=0.3),<br>
-transforms.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5)),<br>
+transforms.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5)),
+<br>
 ---------------------------------------
 I use the LabelSmoothingLoss, and do the Test TimeAugmentation(0.3 x train + 0.7 x test)<br>
 Finally, I ensemble different model's predictions for getting the best score.
