@@ -5,6 +5,7 @@ Use CNN model to do the classification task with food11 dataset.
 I use the efficientnet_b7 model to reach the boss baseline.<br>
 I do the data augmentation. <br>
 ---------------------------------------
+
 ex:<br>
 transforms.RandomVerticalFlip(p=0.3),<br>
 transforms.RandomHorizontalFlip(p=0.3),<br>
@@ -15,6 +16,7 @@ transforms.RandAugment(),<br>
 transforms.RandomPerspective(distortion_scale=0.6, p=0.3),<br>
 transforms.GaussianBlur(kernel_size=(5, 9), sigma=(0.1, 5)),
 <br>
+
 ---------------------------------------
 I use the LabelSmoothingLoss, and do the Test TimeAugmentation(0.3 x train + 0.7 x test)<br>
 Finally, I ensemble different model's predictions for getting the best score.
