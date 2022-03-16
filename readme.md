@@ -3,7 +3,7 @@
 professor : HUNG-YI LEE
 
 department : NTUEE
-
+course website : https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php
 ## HW Description
 ### HW1
 #### Regression - Covid19
