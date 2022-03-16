@@ -1,5 +1,5 @@
-#HW2 Classification
-##Task description:
+# HW2 Classification
+## Task description:
 Extract MFCC features from raw waveform.
 
 I use the RNN model named LSTM to reach the framewise phoneme classification.<br>
