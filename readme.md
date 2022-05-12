@@ -14,3 +14,15 @@ course website : https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php
 #### CNN
 ### HW4
 #### Self-attention
+### HW5
+#### Transformer
+### HW6
+#### GAN 
+### HW7
+#### BERT
+### HW8
+#### Autoencoder
+### HW9
+#### Explainable AI
+### HW10
+#### Attack
