@@ -6,7 +6,7 @@ I use the Chinese-Macbert-large model to reach the Boss baseline.<br>
 Macbert is similar with bert, but it improves the pretrained process.<br>
 
 --------------------------------------------------------------
-####I use some methods to reinforce my performance : <br>
+#### I use some methods to reinforce my performance : <br>
 * I use more limitations to decide the final start / end token of the answer.<br>
 * I overcome the training problem on some paragraphs which are longer than max_paragraph_len.<br>
 * I adjust the train_validation ratio to get more training data.<br>

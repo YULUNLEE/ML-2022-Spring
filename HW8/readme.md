@@ -3,7 +3,7 @@
 Training a Auto-encoder model to determine whether the given image is similar with the training data.
 
 --------------------------------------------------------------
-####I use some methods to reinforce my performance : <br>
+#### I use some methods to reinforce my performance : <br>
 * I use the multi-encoder model to accomplish the task.<br>
 Encoder : 2 * RNN + 1 * CNN + 2 * FCN <br>
 Decoder : 3 * FCN <br>
