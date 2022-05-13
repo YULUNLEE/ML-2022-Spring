@@ -1,5 +1,5 @@
-#HW3 CNN 
-##Task description:
+# HW6 GAN 
+## Task description:
 Use Generative Adversarial model to generate Anime face.
 
 Input: random number<br>
