@@ -26,3 +26,14 @@ course website : https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php
 #### Explainable AI
 ### HW10
 #### Attack
+### HW11
+#### Adaptation
+### HW12
+#### RL
+### HW13
+#### Compression
+### HW14
+#### Life-long
+### HW15
+#### Meta Learning
+
