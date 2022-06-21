@@ -1,5 +1,6 @@
 # HW13 Network Compression
 ## Task description:
+![screenshot-miniimagetnet](report_Q3.png)
 
 * Network Compression: Make your model smaller without losing the performance.<br>
 * Knowledge Distillation - Train a small model(student model) with teacher model, small model can learn better.<br>
