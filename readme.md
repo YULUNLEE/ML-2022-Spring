@@ -1,4 +1,5 @@
 # NTU - Machine Learning
+![image](pic1.png)
 ## Course Introduction
 professor : HUNG-YI LEE
 
